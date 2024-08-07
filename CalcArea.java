@@ -30,14 +30,14 @@ public class CalcArea {
     // Tudo precisa estar dentro do main para ser executado.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean valid = false;
+        boolean valid;
         double lado1 = 0, lado2 = 0;
         
         System.out.println("Exercício 02, Calcular Área.");
         // Removido por recomendação do professor.
         // clear();
-
         do {
+            valid = false;
             System.out.println("Informe o valor do primeiro lado: ");
             try { 
                 lado1 = scanner.nextDouble();
@@ -51,6 +51,7 @@ public class CalcArea {
         } while (!valid);
 
         do {
+            valid = false;
             System.out.println("Informe o valor do segundo lado: ");
             try { 
                 lado2 = scanner.nextDouble();
