@@ -1,7 +1,7 @@
 package ExerciseListOne;
 /* 
     -----| Exercício 03 |-----
-     3) Crie um programa que calcule o volume (largura * altura * profundidade).
+    3) Crie um programa que calcule o volume (largura * altura * profundidade).
 */
 import java.util.Scanner;
 

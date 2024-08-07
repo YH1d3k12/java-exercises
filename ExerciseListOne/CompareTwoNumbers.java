@@ -1,21 +1,19 @@
 package ExerciseListOne;
 /* 
-    -----| Exercício 03 |-----
-     3) Crie um programa que calcule o volume (largura * altura * profundidade).
+    -----| Exercício 04 |-----
+    4) Crie um programa que avalie se um valor é maior do que o dobro de outro valor
 */
 import java.util.Scanner;
 
 
 public class CompareTwoNumbers {
 
-    // Passa scanner como parâmetro para evitar a criação de um novo scanner.
-    // Poderia ser colocado em outro escopo...
-    public static double getDoubleInput(String dimension, Scanner scanner) {
+    public static double getDoubleInput(String text, Scanner scanner) {
         boolean valid;
         double value = 0;
         do {
             valid = false;
-            System.out.println("Informe o valor da " + dimension + ": ");
+            System.out.println(text);
             try { 
                 value = scanner.nextDouble();
                 valid = true;
@@ -31,20 +29,23 @@ public class CompareTwoNumbers {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double largura = 0, altura = 0, profundidade = 0;
+        double num1 = 0, num2 = 0;
         
-        System.out.println("Exercício 03, Calcular Volume.");
+        System.out.println("Exercício 04, Comparação de Números.");
 
-        // Captura o valor da largura.
-        largura = getDoubleInput("largura", scanner);
-        // Captura o valor da altura.
-        altura = getDoubleInput("altura", scanner);
-        // Captura o valor da profundidade.
-        profundidade = getDoubleInput("profundidade", scanner);
+        num1 = getDoubleInput("Digite o primeiro número: ", scanner);
+        num2 = getDoubleInput("Digite o segundo número: ", scanner);
 
         try {
-            System.out.println("O volume é: " + (largura * altura * profundidade));
-            
+            if (num1 > (num2 * 2)) {
+                System.out.println("O primeiro número é maior que o dobro do segundo número.");
+            } 
+            else if (num1 == (num2 * 2)) {
+                System.out.println("O primeiro número é igual ao dobro do segundo número.");
+            }
+            else {
+                System.out.println("O primeiro número não é maior que o dobro do segundo número.");
+            }
         } catch (Exception e) {
             System.out.println("Você digitou valores invalidos, execute novamente.");
         } finally {
