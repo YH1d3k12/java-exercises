@@ -11,6 +11,7 @@ public class CalcMedia {
         Scanner scanner = new Scanner(System.in);
         double media = 0.0;
         
+         System.out.println("Exercício 01, Calcular Média.");
         try {
             for (int i = 0; i < 3; i++) {
                 System.out.println("Digite a " + (i + 1) + "° nota: ");

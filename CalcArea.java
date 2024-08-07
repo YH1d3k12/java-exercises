@@ -50,10 +50,20 @@ public class CalcArea {
             }
         } while (!valid);
 
-        try {
+        do {
             System.out.println("Informe o valor do segundo lado: ");
-            lado2 = scanner.nextDouble();
-            
+            try { 
+                lado2 = scanner.nextDouble();
+                valid = true;
+                System.out.println("Valor informado: " + lado2);
+            }
+            catch (Exception e) {
+                System.out.println("Valor invalido!");
+                scanner.next(); // Limpa o buffer do scanner.
+            }
+        } while (!valid);
+
+        try {           
             System.out.println("O valor da área é: " + (lado1 * lado2));
         } catch (Exception e) {
             System.out.println("Você digitou valores invalidos, execute novamente.");
