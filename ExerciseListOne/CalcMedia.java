@@ -1,3 +1,4 @@
+package ExerciseListOne;
 /* 
     -----| Exercício 01 |-----
     1) Crie um programa que calcule a média ((nota1 + nota2 + nota3 / 3)).

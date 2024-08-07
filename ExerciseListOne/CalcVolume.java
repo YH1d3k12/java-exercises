@@ -1,3 +1,4 @@
+package ExerciseListOne;
 /* 
     -----| Exercício 03 |-----
      3) Crie um programa que calcule o volume (largura * altura * profundidade).
@@ -30,7 +31,6 @@ public class CalcVolume {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean valid;
         double largura = 0, altura = 0, profundidade = 0;
         
         System.out.println("Exercício 03, Calcular Volume.");

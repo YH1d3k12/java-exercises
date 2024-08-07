@@ -1,3 +1,4 @@
+package ExerciseListOne;
 /* 
     -----| Exercício 02 |-----
     2) Crie um programa que calcule a área (lado1 * lado2).
