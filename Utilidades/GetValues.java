@@ -44,4 +44,25 @@ public class GetValues {
         } while (!valid);
         return value;
     }
+
+
+    public static String getStringInput(String text, Scanner scanner) {
+        String value = "";
+        boolean valid;
+        do {
+            valid = false;
+            // Printa um texto informativo.
+            System.out.println(text);
+            try { 
+                value = scanner.nextLine();
+                valid = true;
+                System.out.println("Valor informado: " + value);
+            }
+            catch (Exception e) {
+                System.out.println("Valor invalido!\nErro: " + e);
+                scanner.next(); // Limpa o buffer do scanner.
+            }
+        } while (!valid);
+        return value;
+    }
 }
