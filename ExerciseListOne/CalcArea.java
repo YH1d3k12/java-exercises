@@ -1,14 +1,14 @@
-package ExerciseListOne;
 /* 
     -----| Exercício 02 |-----
     2) Crie um programa que calcule a área (lado1 * lado2).
 */
+package ExerciseListOne;
 import java.util.Scanner;
+import Utilidades.GetValues;
 
 
 // Nome da classe deve ser o mesmo do arquivo.
 public class CalcArea {
-
     // Função provida pelo gpt para executar um "clear" no terminal. "Melhor deixar por fora, funções de terminal tendem a dar errado -- Jackson".
     /*
         public static void clear() {
@@ -31,45 +31,22 @@ public class CalcArea {
     // Tudo precisa estar dentro do main para ser executado.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean valid;
         double lado1 = 0, lado2 = 0;
+        
         
         System.out.println("Exercício 02, Calcular Área.");
         // Removido por recomendação do professor.
         // clear();
-        do {
-            valid = false;
-            System.out.println("Informe o valor do primeiro lado: ");
-            try { 
-                lado1 = scanner.nextDouble();
-                valid = true;
-                System.out.println("Valor informado: " + lado1);
-            }
-            catch (Exception e) {
-                System.out.println("Valor invalido!");
-                scanner.next(); // Limpa o buffer do scanner.
-            }
-        } while (!valid);
-
-        do {
-            valid = false;
-            System.out.println("Informe o valor do segundo lado: ");
-            try { 
-                lado2 = scanner.nextDouble();
-                valid = true;
-                System.out.println("Valor informado: " + lado2);
-            }
-            catch (Exception e) {
-                System.out.println("Valor invalido!");
-                scanner.next(); // Limpa o buffer do scanner.
-            }
-        } while (!valid);
+        lado1 = GetValues.getDoubleInput("Informe o valor do primeiro lado: ", scanner);
+        lado2 = GetValues.getDoubleInput("Informe o valor do segundo lado: ", scanner);
 
         try {           
             System.out.println("O valor da área é: " + (lado1 * lado2));
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println("Você digitou valores invalidos, execute novamente.");
-        } finally {
+        } 
+        finally {
             // Boa práticar fechar o scanner após o seu uso.
             scanner.close();
         }
