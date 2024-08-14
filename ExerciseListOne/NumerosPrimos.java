@@ -35,7 +35,7 @@ public class NumerosPrimos {
                 }
             }
 
-            if (qtdDivisores > 2) {
+            if (qtdDivisores > 2 || qtdDivisores < 2) {
                 System.out.println(num + " não é um número primo");
             }
             else {
