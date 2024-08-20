@@ -7,7 +7,6 @@ import java.util.Scanner;
 import Utilidades.GetValues;
 
 
-
 public class CalcMedia {
 
     public static void main(String[] args) {

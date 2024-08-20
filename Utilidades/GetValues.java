@@ -14,7 +14,7 @@ public class GetValues {
             try { 
                 value = scanner.nextDouble();
                 valid = true;
-                System.out.println("Valor informado: " + value);
+                // System.out.println("Valor informado: " + value);
             }
             catch (Exception e) {
                 System.out.println("Valor invalido!\nErro: " + e);
@@ -35,7 +35,7 @@ public class GetValues {
             try { 
                 value = scanner.nextInt();
                 valid = true;
-                System.out.println("Valor informado: " + value);
+                // System.out.println("Valor informado: " + value);
             }
             catch (Exception e) {
                 System.out.println("Valor invalido!\nErro: " + e);
@@ -56,7 +56,7 @@ public class GetValues {
             try { 
                 value = scanner.nextLine();
                 valid = true;
-                System.out.println("Valor informado: " + value);
+                // System.out.println("Valor informado: " + value);
             }
             catch (Exception e) {
                 System.out.println("Valor invalido!\nErro: " + e);
