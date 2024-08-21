@@ -12,6 +12,8 @@ public class ArraysForEach {
         // Array populado com dados.
         int[] arrayInteiros = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
+        System.out.println("Exercício 02, Imprimir Array com ForEach.");
+
         for (int i : arrayInteiros) {
             System.out.println("Valor: " + i);
         }
