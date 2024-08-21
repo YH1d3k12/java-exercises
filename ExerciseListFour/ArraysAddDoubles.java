@@ -6,7 +6,7 @@ package ExerciseListFour;
 import java.util.Scanner;
 import Utilidades.GetValues;
 
-public class ArraysAdd {
+public class ArraysAddDoubles {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double[] arrayDoubles = new double[10];
