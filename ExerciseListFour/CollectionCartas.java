@@ -3,13 +3,11 @@
     5) Crie um programa que possua uma collection que represente as 52 cartas do baralho, imrpima elas.
 */
 package ExerciseListFour;
-import java.util.Scanner;
 import java.util.HashMap;
 
 public class CollectionCartas {
     
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         HashMap<Integer, String> map = new HashMap<>();
 
         String[] nomes = {
