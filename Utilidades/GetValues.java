@@ -46,15 +46,39 @@ public class GetValues {
     }
 
 
+    // Função especial para a prova, pois conceito só pode ser entre 0 a 3.
+    public static Integer getConceptInput(String text, Scanner scanner) {
+        Integer value = 0;
+        boolean valid;
+        do {
+            valid = false;
+            // Printa um texto informativo.
+            System.out.print(text);
+            try { 
+                value = scanner.nextInt();
+                if (value == 0 || value == 1 || value == 2 || value == 3) {
+                    valid = true;
+                }
+                // System.out.println("Valor informado: " + value);
+            }
+            catch (Exception e) {
+                System.out.println("Valor invalido!\nErro: " + e);
+                scanner.next(); // Limpa o buffer do scanner.
+            }
+        } while (!valid);
+        return value;
+    }
+
+
     public static String getStringInput(String text, Scanner scanner) {
         String value = "";
         boolean valid;
         do {
             valid = false;
             // Printa um texto informativo.
-            System.out.println(text);
+            System.out.print(text);
             try { 
-                value = scanner.nextLine();
+                value = scanner.next();
                 valid = true;
                 // System.out.println("Valor informado: " + value);
             }
