@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 public class GetValues {
-    // Passa scanner como parâmetro para evitar a criação de um novo scanner.
+    // Recebe o scanner como parâmetro para evitar a criação de um novo scanner.
     public static double getDoubleInput(String text, Scanner scanner) {
         double value = 0;
         boolean valid;
@@ -24,7 +24,8 @@ public class GetValues {
         return value;
     }
 
-    
+
+    // Recebe o scanner como parâmetro para evitar a criação de um novo scanner.
     public static int getIntInput(String text, Scanner scanner) {
         int value = 0;
         boolean valid;
@@ -70,6 +71,8 @@ public class GetValues {
     }
 
 
+    
+    // Recebe o scanner como parâmetro para evitar a criação de um novo scanner.
     public static String getStringInput(String text, Scanner scanner) {
         String value = "";
         boolean valid;
