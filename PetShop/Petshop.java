@@ -15,23 +15,14 @@ import PetShop.Tutor;
 
 public class Petshop {
     
-    // Integer idCategoriaAnimal = 1;
-    // Integer idTutor = 1;
-    // Integer idAnimal = 1;
-    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int action = 0;
-        
+
         // Mockando os dados nas listas para agilizar os testes.
-        ArrayList<CategoriaAnimal> listaCategoriaAnimal = new ArrayList<>();
-        listaCategoriaAnimal = CategoriaAnimal.MockDataCategoriaAnimal(listaCategoriaAnimal);
-
-        ArrayList<Tutor> listaTutor = new ArrayList<>();
-        listaTutor = Tutor.MockDataTutor(listaTutor);
-
-        ArrayList<Animal> listaAnimal = new ArrayList<>();
-        listaAnimal = Animal.MockDataAnimal(listaAnimal);
+        CategoriaAnimal.MockDataCategoriaAnimal();        
+        Tutor.MockDataTutor();
+        Animal.MockDataAnimal();
 
 
         System.out.println("Bem Vindo ao Sistema da Pet Shop!");
@@ -40,32 +31,32 @@ public class Petshop {
             switch (action) {
                 case 1:
                     clearTerminalGambiarra();
-                    listaCategoriaAnimal.add(CategoriaAnimal.createCategoriaAnimal(scanner));
+                    CategoriaAnimal.createCategoriaAnimal(scanner);
                     System.out.println("\n");
                     break;
                 case 2:
                     clearTerminalGambiarra();
-                    listaTutor.add(Tutor.createTutor(scanner));
+                    Tutor.createTutor(scanner);
                     System.out.println("\n");
                     break;
                 case 3:
                     clearTerminalGambiarra();
-                    listaAnimal.add(Animal.createAnimal(scanner));
+                    Animal.createAnimal(scanner);
                     System.out.println("\n");
                     break;
                 case 4:
                     clearTerminalGambiarra();
-                    CategoriaAnimal.listCategoriaAnimal(listaCategoriaAnimal, listaAnimal);
+                    CategoriaAnimal.listCategoriaAnimal(Animal.getListaAnimal());
                     System.out.println("\n");
                     break;
                 case 5:
                     clearTerminalGambiarra();
-                    Tutor.listTutor(listaTutor, listaAnimal);
+                    Tutor.listTutor(Animal.getListaAnimal());
                     System.out.println("\n");
                     break;
                 case 6:
                     clearTerminalGambiarra();
-                    Animal.listAnimal(listaAnimal, listaTutor, listaCategoriaAnimal);
+                    Animal.listAnimal(Tutor.getListaTutor(), CategoriaAnimal.getListaCategoriaAnimal());
                     System.out.println("\n");
                     break;
                 default:

@@ -6,15 +6,22 @@ import java.util.Scanner;
 
 
 public class CategoriaAnimal {
+    // Outros.
+    private static Integer autoIncrementId = 1;
+    // Atributos.
     public Integer id;
     public String descricao;
+    // Lista.
+    private static ArrayList<CategoriaAnimal> listaCategoriaAnimal = new ArrayList<>();
 
+    // Construtor.
     public CategoriaAnimal (
-        Integer id,
         String descricao
     ) {
-        this.id = id;
+        this.id = autoIncrementId;
         this.descricao = descricao;
+
+        autoIncrementId++;
     };
 
 
@@ -22,22 +29,26 @@ public class CategoriaAnimal {
         return "ID: " + id + "\nDescrição: " + descricao;
     }
 
+
+    public static ArrayList<CategoriaAnimal> getListaCategoriaAnimal() {
+        return listaCategoriaAnimal;
+    }
+
     // |--------------------------------------------------|
     // |---------------- Categoria Animal ----------------|
     // |--------------------------------------------------|
     public static CategoriaAnimal createCategoriaAnimal(Scanner scanner) {
         // Captura os campos necessários.
-        Integer id = Utilidades.GetValues.getIntInput("Informe o id: ", scanner);
         String descricao = Utilidades.GetValues.getStringInput("Informe a descrição da categoria: ", scanner);
         
         // Cria um novo objeto e o retorna.
-        CategoriaAnimal novaCategoriaAnimal = new CategoriaAnimal(id, descricao);
+        CategoriaAnimal novaCategoriaAnimal = new CategoriaAnimal(descricao);
+        listaCategoriaAnimal.add(novaCategoriaAnimal);
         return novaCategoriaAnimal;
     }
 
 
     public static void listCategoriaAnimal(
-        ArrayList<CategoriaAnimal> listaCategoriaAnimal,
         ArrayList<Animal> listaAnimal
     ) {
         int contador = 0;
@@ -55,19 +66,19 @@ public class CategoriaAnimal {
     }
 
 
-    public static ArrayList<CategoriaAnimal> MockDataCategoriaAnimal(ArrayList<CategoriaAnimal> listaCategoriaAnimal) {
+    public static ArrayList<CategoriaAnimal> MockDataCategoriaAnimal() {
         CategoriaAnimal novoCategoriaAnimal;
 
-        novoCategoriaAnimal = new CategoriaAnimal(1, "Cachorro");
+        novoCategoriaAnimal = new CategoriaAnimal("Cachorro");
         listaCategoriaAnimal.add(novoCategoriaAnimal);
 
-        novoCategoriaAnimal = new CategoriaAnimal(2, "Gato");
+        novoCategoriaAnimal = new CategoriaAnimal("Gato");
         listaCategoriaAnimal.add(novoCategoriaAnimal);
 
-        novoCategoriaAnimal = new CategoriaAnimal(3, "Calango");
+        novoCategoriaAnimal = new CategoriaAnimal("Calango");
         listaCategoriaAnimal.add(novoCategoriaAnimal);
 
-        novoCategoriaAnimal = new CategoriaAnimal(4, "Mico");
+        novoCategoriaAnimal = new CategoriaAnimal("Mico");
         listaCategoriaAnimal.add(novoCategoriaAnimal);
 
         return listaCategoriaAnimal;

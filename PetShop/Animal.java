@@ -6,27 +6,34 @@ import java.util.Scanner;
 
 
 public class Animal {
+    // Outros.
+    private static Integer autoIncrementId = 1;
+    // Atributos.
     public Integer id;
     public String nome;
     public String raca;
     public Double peso;
     public Integer idCategoriaAnimal;
     public Integer idTutor;
+    // Lista.
+    private static ArrayList<Animal> listaAnimal = new ArrayList<>();
 
+    // Construtor.
     public Animal (
-        Integer id,
         String nome,
         String raca,
         Double peso,
         Integer idCategoriaAnimal,
         Integer idTutor
     ) {
-        this.id = id;
+        this.id = autoIncrementId;
         this.nome = nome;
         this.raca = raca;
         this.peso = peso;
         this.idCategoriaAnimal = idCategoriaAnimal;
         this.idTutor = idTutor;
+
+        autoIncrementId++;
     };
 
 
@@ -61,12 +68,17 @@ public class Animal {
         );
     }
 
+
+    public static ArrayList<Animal> getListaAnimal() {
+        return listaAnimal;
+    }
+
+
     // |--------------------------------------------------|
     // |--------------------- Animal ---------------------|
     // |--------------------------------------------------|
     public static Animal createAnimal(Scanner scanner) {
         // Captura os campos necessários.
-        Integer id = Utilidades.GetValues.getIntInput("Informe o id: ", scanner);
         String nome = Utilidades.GetValues.getStringInput("Informe o nome do animal: ", scanner);
         String raca = Utilidades.GetValues.getStringInput("Informe a raça do animal: ", scanner);
         Double peso = Utilidades.GetValues.getDoubleInput("Informe o peso do animal: ", scanner);
@@ -76,13 +88,13 @@ public class Animal {
         Integer idTutor = Utilidades.GetValues.getIntInput("Informe o id da categoria do animal: ", scanner);
         
         // Cria um novo objeto e o retorna.
-        Animal novoAnimal = new Animal(id, nome, raca, peso, idCategoriaAnimal, idTutor);
+        Animal novoAnimal = new Animal(nome, raca, peso, idCategoriaAnimal, idTutor);
+        listaAnimal.add(novoAnimal);
         return novoAnimal;
     }
 
 
     public static void listAnimal(
-        ArrayList<Animal> listaAnimal,
         ArrayList<Tutor> listaTutor,
         ArrayList<CategoriaAnimal> listaCategoriaAnimal
     ) {
@@ -92,22 +104,22 @@ public class Animal {
     }
 
 
-    public static ArrayList<Animal> MockDataAnimal(ArrayList<Animal> listaAnimal) {
+    public static ArrayList<Animal> MockDataAnimal() {
         Animal novoAnimal;
 
-        novoAnimal = new Animal(1, "Mongodongo", "Shiba", 10.4, 1, 1);
+        novoAnimal = new Animal("Mongodongo", "Shiba", 10.4, 1, 1);
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal(2, "Xurupipa", "fdp", 5.0, 3, 1);
+        novoAnimal = new Animal("Xurupipa", "fdp", 5.0, 3, 1);
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal(3, "Satanaz Carvalho", "Chihuahua ", 0.1, 1, 2);
+        novoAnimal = new Animal("Satanaz Carvalho", "Chihuahua ", 0.1, 1, 2);
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal(4, "Tom", "Cartoon ", 99.9, 2, 3);
+        novoAnimal = new Animal("Tom", "Cartoon ", 99.9, 2, 3);
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal(5, "Vagabundeco", "Mico Ladrao Safado ", 1.5, 4, 3);
+        novoAnimal = new Animal("Vagabundeco", "Mico Ladrao Safado ", 1.5, 4, 3);
         listaAnimal.add(novoAnimal);
 
         return listaAnimal;

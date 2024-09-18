@@ -6,46 +6,56 @@ import java.util.Scanner;
 
 
 public class Tutor {
+    // Outros.
+    private static Integer autoIncrementId = 1;
+    // Atributos.
     public Integer id;
     public String nome;
     public String telefone;
     public String email;
+    // Lista.
+    private static ArrayList<Tutor> listaTutor = new ArrayList<>();
 
+    // Construtor.
     public Tutor (
-        Integer id,
         String nome,
         String telefone,
         String email
     ) {
-        this.id = id;
+        this.id = autoIncrementId;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+
+        autoIncrementId++;
     };
+
 
     public String toString() {
         return "ID: " + id + "\nNome: " + nome;
     }
 
 
+    public static ArrayList<Tutor> getListaTutor() {
+        return listaTutor;
+    }
+
     // |--------------------------------------------------|
     // |---------------------- Tutor ---------------------|
     // |--------------------------------------------------|
     public static Tutor createTutor(Scanner scanner) {
         // Captura os campos necessários.
-        Integer id = Utilidades.GetValues.getIntInput("Informe o id: ", scanner);
         String nome = Utilidades.GetValues.getStringInput("Informe o nome do tutor: ", scanner);
         String telefone = Utilidades.GetValues.getStringInput("Informe o telefone do tutor: ", scanner);
         String email = Utilidades.GetValues.getStringInput("Informe o email do tutor: ", scanner);
         
         // Cria um novo objeto e o retorna.
-        Tutor novoTutor = new Tutor(id, nome, telefone, email);
+        Tutor novoTutor = new Tutor(nome, telefone, email);
         return novoTutor;
     }
 
 
     public static void listTutor(
-        ArrayList<Tutor> listaTutor,
         ArrayList<Animal> listaAnimal
     ) {
         int contador = 0;
@@ -63,16 +73,16 @@ public class Tutor {
     }
 
 
-    public static ArrayList<Tutor> MockDataTutor(ArrayList<Tutor> listaTutor) {
+    public static ArrayList<Tutor> MockDataTutor() {
         Tutor novoTutor;
 
-        novoTutor = new Tutor(1, "Samuel Perinlongo Kutz", "9999-9999", "pernilongo@hotmail.com");
+        novoTutor = new Tutor("Samuel Perinlongo Kutz", "9999-9999", "pernilongo@hotmail.com");
         listaTutor.add(novoTutor);
 
-        novoTutor = new Tutor(2, "Luiz T-Rex Cordeiro", "2424-2424", "trexti@gmail.com");
+        novoTutor = new Tutor("Luiz T-Rex Cordeiro", "2424-2424", "trexti@gmail.com");
         listaTutor.add(novoTutor);
 
-        novoTutor = new Tutor(3, "Miguel Marcha Ré Gonçalvez", "1111-1111", "miguel@hotmail.com");
+        novoTutor = new Tutor("Miguel Marcha Ré Gonçalvez", "1111-1111", "miguel@hotmail.com");
         listaTutor.add(novoTutor);
 
         return listaTutor;
