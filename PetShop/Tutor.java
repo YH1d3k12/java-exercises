@@ -63,7 +63,7 @@ public class Tutor {
         for (int i = 0; i < listaTutor.size(); i++) {
             System.out.println("---------------------------------------------------\n" + listaTutor.get(i));
             for (int j = 0; j < listaAnimal.size(); j++) {
-                if (listaAnimal.get(j).idTutor == listaTutor.get(i).id) {
+                if (listaAnimal.get(j).tutor.id == listaTutor.get(i).id) {
                     contador++;
                 }
             }

@@ -56,7 +56,7 @@ public class CategoriaAnimal {
         for (int i = 0; i < listaCategoriaAnimal.size(); i++) {
             System.out.println("---------------------------------------------------\n" + listaCategoriaAnimal.get(i));
             for (int j = 0; j < listaAnimal.size(); j++) {
-                if (listaAnimal.get(j).idCategoriaAnimal == listaCategoriaAnimal.get(i).id) {
+                if (listaAnimal.get(j).categoria.id == listaCategoriaAnimal.get(i).id) {
                     contador++;
                 }
             }

@@ -4,6 +4,9 @@ package PetShop;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Classes.
+import PetShop.CategoriaAnimal;
+import PetShop.Tutor;
 
 public class Animal {
     // Outros.
@@ -13,8 +16,8 @@ public class Animal {
     public String nome;
     public String raca;
     public Double peso;
-    public Integer idCategoriaAnimal;
-    public Integer idTutor;
+    public CategoriaAnimal categoria;
+    public Tutor tutor;
     // Lista.
     private static ArrayList<Animal> listaAnimal = new ArrayList<>();
 
@@ -24,47 +27,41 @@ public class Animal {
         String raca,
         Double peso,
         Integer idCategoriaAnimal,
-        Integer idTutor
+        Integer idTutor,
+        ArrayList<Tutor> listaTutor,
+        ArrayList<CategoriaAnimal> listaCategoriaAnimal
     ) {
         this.id = autoIncrementId;
         this.nome = nome;
         this.raca = raca;
         this.peso = peso;
-        this.idCategoriaAnimal = idCategoriaAnimal;
-        this.idTutor = idTutor;
+        
+        for (int i = 0; i < listaTutor.size(); i++) {
+            if (listaTutor.get(i).id == idTutor) {
+                this.tutor = listaTutor.get(i);
+                break;
+            }
+        }
+        
+        for (int j = 0; j < listaCategoriaAnimal.size(); j++) {
+            if (listaCategoriaAnimal.get(j).id == idCategoriaAnimal) {
+                this.categoria = listaCategoriaAnimal.get(j);
+                break;
+            }
+        }
 
         autoIncrementId++;
     };
 
 
-    public String toString(
-        ArrayList<Tutor> listaTutor,
-        ArrayList<CategoriaAnimal> listaCategoriaAnimal
-    ) {
-        String nomeTutor = "";
-        String descricaoCategoriaAnimal = "";
-
-        for (int i = 0; i < listaTutor.size(); i++) {
-            if (listaTutor.get(i).id == idTutor) {
-                nomeTutor = listaTutor.get(i).nome;
-                break;
-            }
-        }
-
-        for (int j = 0; j < listaCategoriaAnimal.size(); j++) {
-            if (listaCategoriaAnimal.get(j).id == idCategoriaAnimal) {
-                descricaoCategoriaAnimal = listaCategoriaAnimal.get(j).descricao;
-                break;
-            }
-        }
-
+    public String toString() {
         return (
             "ID: " + id + 
             "\nNome: " + nome + 
             "\nRaça: " + raca + 
             "\nPeso: " + peso + 
-            "\nCategoria Animal: " + descricaoCategoriaAnimal +
-            "\nTutor: " + nomeTutor
+            "\nCategoria Animal: " + categoria.descricao +
+            "\nTutor: " + tutor.nome
         );
     }
 
@@ -88,7 +85,15 @@ public class Animal {
         Integer idTutor = Utilidades.GetValues.getIntInput("Informe o id da categoria do animal: ", scanner);
         
         // Cria um novo objeto e o retorna.
-        Animal novoAnimal = new Animal(nome, raca, peso, idCategoriaAnimal, idTutor);
+        Animal novoAnimal = new Animal(
+            nome, 
+            raca, 
+            peso, 
+            idCategoriaAnimal, 
+            idTutor, 
+            Tutor.getListaTutor(), 
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
         return novoAnimal;
     }
@@ -99,7 +104,7 @@ public class Animal {
         ArrayList<CategoriaAnimal> listaCategoriaAnimal
     ) {
         for (int i = 0; i < listaAnimal.size(); i++) {
-            System.out.println("---------------------------------------------------\n" + listaAnimal.get(i).toString(listaTutor, listaCategoriaAnimal));
+            System.out.println("---------------------------------------------------\n" + listaAnimal.get(i));
         }
     }
 
@@ -107,19 +112,59 @@ public class Animal {
     public static ArrayList<Animal> MockDataAnimal() {
         Animal novoAnimal;
 
-        novoAnimal = new Animal("Mongodongo", "Shiba", 10.4, 1, 1);
+        novoAnimal = new Animal(
+            "Mongodongo", 
+            "Shiba", 
+            10.4, 
+            1, 
+            1,    
+            Tutor.getListaTutor(),
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal("Xurupipa", "fdp", 5.0, 3, 1);
+        novoAnimal = new Animal(
+            "Xurupipa", 
+            "fdp", 
+            5.0, 
+            3, 
+            1,
+            Tutor.getListaTutor(),
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal("Satanaz Carvalho", "Chihuahua ", 0.1, 1, 2);
+        novoAnimal = new Animal(
+            "Satanaz Caralho", 
+            "Chihuahua ", 
+            0.1, 
+            1, 
+            2,
+            Tutor.getListaTutor(),
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal("Tom", "Cartoon ", 99.9, 2, 3);
+        novoAnimal = new Animal(
+            "Tom", 
+            "Cartoon", 
+            99.9, 
+            2, 
+            3,            
+            Tutor.getListaTutor(),
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
 
-        novoAnimal = new Animal("Vagabundeco", "Mico Ladrao Safado ", 1.5, 4, 3);
+        novoAnimal = new Animal(
+            "Vagabundeco", 
+            "Mico Ladrao Safado", 
+            1.5, 
+            4, 
+            3,
+            Tutor.getListaTutor(),
+            CategoriaAnimal.getListaCategoriaAnimal()
+        );
         listaAnimal.add(novoAnimal);
 
         return listaAnimal;
