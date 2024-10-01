@@ -1,4 +1,4 @@
-package PetShop;
+package School;
 
 // Código de Terceiros.
 import java.util.ArrayList;
@@ -8,55 +8,55 @@ import java.util.Scanner;
 import Utilidades.GetValues;
 
 // Classes.
-import PetShop.CategoriaAnimal;
-import PetShop.Animal;
-import PetShop.Tutor;
+import School.Teacher;
+import School.Course;
+import School.Student;
 
 
-public class Petshop {
+public class SchoolSystem {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int action = 0;
 
         // Mockando os dados nas listas para agilizar os testes.
-        CategoriaAnimal.MockDataCategoriaAnimal();        
-        Tutor.MockDataTutor();
-        Animal.MockDataAnimal();
+        Teacher.mockTeacherData();
+        Course.mockCourseData();
+        Student.mockStudentData();
 
 
-        System.out.println("Bem Vindo ao Sistema da Pet Shop!");
+        System.out.println("Bem vindo ao Sistema Escolar!");
         do {
-            action = GetValues.getIntInput("Escolha uma opção do menu: \n[1] - Cadastrar Categoria de Animal\n[2] - Cadastrar Tutor\n[3] - Cadastrar Animal\n[4] - Listar Categorias de Animais\n[5] - Listar Tutores\n[6] - Listar Animais\n[7] - Encerrar o Programa.", scanner);
+            action = GetValues.getIntInput("Escolha uma opção do menu: \n[1] - Cadastrar Professor\n[2] - Cadastrar Curso\n[3] - Cadastrar Aluno\n[4] - Listar Professores\n[5] - Listar Cursos\n[6] - Listar Alunos\n[7] - Encerrar o Programa.", scanner);
             switch (action) {
                 case 1:
                     clearTerminalGambiarra();
-                    CategoriaAnimal.createCategoriaAnimal(scanner);
+                    Teacher.createTeacher(scanner);
                     System.out.println("\n");
                     break;
                 case 2:
                     clearTerminalGambiarra();
-                    Tutor.createTutor(scanner);
+                    Course.createCourse(scanner);
                     System.out.println("\n");
                     break;
                 case 3:
                     clearTerminalGambiarra();
-                    Animal.createAnimal(scanner);
+                    Student.createStudent(scanner);
                     System.out.println("\n");
                     break;
                 case 4:
                     clearTerminalGambiarra();
-                    CategoriaAnimal.listCategoriaAnimal(Animal.getListaAnimal());
+                    Teacher.listTeachersToMe();
                     System.out.println("\n");
                     break;
                 case 5:
                     clearTerminalGambiarra();
-                    Tutor.listTutor(Animal.getListaAnimal());
+                    Course.listCoursesToMe();
                     System.out.println("\n");
                     break;
                 case 6:
                     clearTerminalGambiarra();
-                    Animal.listAnimal(Tutor.getListaTutor(), CategoriaAnimal.getListaCategoriaAnimal());
+                    Student.listStudentsTome();
                     System.out.println("\n");
                     break;
                 default:
