@@ -3,13 +3,6 @@ package School;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import java.util.regex.Pattern;
-
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 public class Student {
     // Outros.
     private static Integer autoIncrementId = 1;
@@ -25,21 +18,14 @@ public class Student {
     // Construtor.
     public Student(
         String name,
-        LocalDate birthdate,
+        String birthdate,
         String cpf,
         Integer courseId,
         ArrayList<Course> courseList
     ) {
         this.id = autoIncrementId;
         this.name = name;
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            this.birthdate = LocalDate.parse(birthdate, formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Data inválida. Formato esperado: dd/MM/yyyy");
-        }
-
+        this.birthdate = birthdate;
         this.cpf = cpf;
 
         for (int i = 0; i < courseList.size(); i++) {
@@ -50,12 +36,6 @@ public class Student {
         }
 
         autoIncrementId++;
-    }
-
-    public int getAge() {
-        if (birthdate !== null) {
-            return Period.between(birthdate, LocalDate.now()).getYears();
-        }
     }
 
      public static boolean isValidCPF(String cpf) {
@@ -75,7 +55,6 @@ public class Student {
         return (
             "ID: " + id +
             "\nName: " + name +
-            "\nAge: " + getAge(birthdate) +
             "\nBirthdate: " + birthdate +
             "\nCPF: " + cpf + 
             "\nCourse: " + course.name

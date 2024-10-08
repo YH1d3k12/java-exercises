@@ -1,17 +1,10 @@
 package School;
 
 // Código de Terceiros.
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Meu Código.
 import Utilidades.GetValues;
-
-// Classes.
-import School.Teacher;
-import School.Course;
-import School.Student;
-
 
 public class SchoolSystem {
     
