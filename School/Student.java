@@ -3,6 +3,13 @@ package School;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.util.regex.Pattern;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Student {
     // Outros.
     private static Integer autoIncrementId = 1;
@@ -18,14 +25,21 @@ public class Student {
     // Construtor.
     public Student(
         String name,
-        String birthdate,
+        LocalDate birthdate,
         String cpf,
         Integer courseId,
         ArrayList<Course> courseList
     ) {
         this.id = autoIncrementId;
         this.name = name;
-        this.birthdate = birthdate;
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            this.birthdate = LocalDate.parse(birthdate, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Data inválida. Formato esperado: dd/MM/yyyy");
+        }
+
         this.cpf = cpf;
 
         for (int i = 0; i < courseList.size(); i++) {
@@ -38,10 +52,30 @@ public class Student {
         autoIncrementId++;
     }
 
+    public int getAge() {
+        if (birthdate !== null) {
+            return Period.between(birthdate, LocalDate.now()).getYears();
+        }
+    }
+
+     public static boolean isValidCPF(String cpf) {
+        // Remove caracteres não numéricos.
+        cpf = cpf.replaceAll("[^0-9]", "");
+
+        // Verifica se tem 11 dígitos.
+        if (cpf.length() != 11) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public String toString() {
         return (
             "ID: " + id +
             "\nName: " + name +
+            "\nAge: " + getAge(birthdate) +
             "\nBirthdate: " + birthdate +
             "\nCPF: " + cpf + 
             "\nCourse: " + course.name
@@ -62,7 +96,13 @@ public class Student {
         // Captura os campos necessários.
         String name = Utilidades.GetValues.getStringInput("Informe o nome do aluno: ", scanner);
         String birthdate = Utilidades.GetValues.getStringInput("Informe a data de nascimento do aluno: ", scanner);
-        String cpf = Utilidades.GetValues.getStringInput("Informe o cpf do aluno: ", scanner);
+        String cpf;
+        do {
+            cpf = Utilidades.GetValues.getStringInput("Informe o CPF do aluno: ", scanner);
+            if (!isValidCPF(cpf)) {
+                System.out.println("CPF inválido. Tente novamente.");
+            }
+        } while (!isValidCPF(cpf));
         Integer courseId = Utilidades.GetValues.getIntInput("Informe o id do curso: ", scanner);
         
         // Cria um novo objeto e o retorna.

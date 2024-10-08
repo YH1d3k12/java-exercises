@@ -30,7 +30,8 @@ public class Teacher {
             "ID: " + id +
             "\nName: " + name +
             "\nDepartment: " + department +
-            getTeacherCoursesAndStudents()
+            getTeacherCoursesAndStudents() +
+            "\nTotal Workload: " + getTotalWorkload() + " hours"
         );
     }
 
@@ -81,6 +82,16 @@ public class Teacher {
         }
         
         return sb.toString();
+    }
+
+    public int getTotalWorkload() {
+        int totalWorkload = 0;
+        for (Course course : Course.getCourseList()) {
+            if (course.teacher.id == this.id) {
+                totalWorkload += course.workload;
+            }
+        }
+        return totalWorkload;
     }
 
     // Adiciona dados a lista de professores para agilizar os testes.
