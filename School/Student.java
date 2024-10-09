@@ -3,17 +3,14 @@ package School;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Student {
-    // Outros.
-    private static Integer autoIncrementId = 1;
-    // Atributos.
-    public Integer id;
-    public String name;
-    public String birthdate;
-    public String cpf;
-    public Course course;
-    // Lista.
+public class Student extends Person {
+    // 'Banco'.
     private static ArrayList<Student> studentList = new ArrayList<>();
+    private static Integer autoIncrementId = 1;
+
+    // Atributos.
+    private Integer id;
+    private Course course;
     
     // Construtor.
     public Student(
@@ -23,10 +20,8 @@ public class Student {
         Integer courseId,
         ArrayList<Course> courseList
     ) {
+        super(name, birthdate, cpf);
         this.id = autoIncrementId;
-        this.name = name;
-        this.birthdate = birthdate;
-        this.cpf = cpf;
 
         for (int i = 0; i < courseList.size(); i++) {
             if (courseList.get(i).id == courseId) {
@@ -38,34 +33,31 @@ public class Student {
         autoIncrementId++;
     }
 
-     public static boolean isValidCPF(String cpf) {
-        // Remove caracteres não numéricos.
-        cpf = cpf.replaceAll("[^0-9]", "");
-
-        // Verifica se tem 11 dígitos.
-        if (cpf.length() != 11) {
-            return false;
-        }
-        else {
-            return true;
-        }
+    // Setters.
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public String toString() {
-        return (
-            "ID: " + id +
-            "\nName: " + name +
-            "\nBirthdate: " + birthdate +
-            "\nCPF: " + cpf + 
-            "\nCourse: " + course.name
-        );
-    }
-
+    // Getters.
     public static ArrayList<Student> getStudentList() {
         return studentList;
     }
 
-    public static void listStudentsTome() {
+    public Course getCourse() {
+        return this.course;
+    }
+    
+    @Override
+    public String toString() {
+        return "ID: " + this.id
+            + "\nName: " + this.getName()
+            + "\nBirthdate: " + this.getBirthDay()
+            + "\nCPF: " + this.getCPF()
+            + "\nCourse: " + this.course.name;
+    }
+
+
+    public static void listStudents() {
         for (Student student : studentList) {
             System.out.println("--------------------------\n" + student);
         }
@@ -78,10 +70,10 @@ public class Student {
         String cpf;
         do {
             cpf = Utilidades.GetValues.getStringInput("Informe o CPF do aluno: ", scanner);
-            if (!isValidCPF(cpf)) {
+            if (!Utilidades.DataValidation.isValidCPF(cpf)) {
                 System.out.println("CPF inválido. Tente novamente.");
             }
-        } while (!isValidCPF(cpf));
+        } while (!Utilidades.DataValidation.isValidCPF(cpf));
         Integer courseId = Utilidades.GetValues.getIntInput("Informe o id do curso: ", scanner);
         
         // Cria um novo objeto e o retorna.
